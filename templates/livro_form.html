@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}
+    Adicionar Livro
+{% endblock %}
+
+{% block tituloPagina %}
+    Novo Livro
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-primary"> Salvar </button>
+    </form>
+{% endblock %}

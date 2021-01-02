@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Listagem de Livros
+{% endblock title %}
+
+{% block tituloPagina %}
+Listagem de Livros
+{% endblock tituloPagina %}
+
+{% block content %}
+<table class="table">
+    <thead>
+    <tr>
+        <th>Autor</th>
+        <th>Titulo</th>
+        <th>Ano</th>
+        <th>Editora</th>
+        <th>Ação</th>
+    </tr>
+    </thead>
+    <tbody>
+    {%  for livro in lista %}
+        <tr>
+            <td>{{ livro.autor }}</td>
+            <td>{{ livro.titulo }}</td>
+            <td>{{ livro.ano_publicacao }}</td>
+            <td>{{ livro.editora }}</td>
+            <td>
+                <a href="{% url 'livro_edit' pk=livro.pk %}">
+                    <span class="button">Edit  /</span>
+                </a>
+                <a href="{% url 'livro_remove' pk=livro.pk %}">
+                    <span class="button">Remove</span>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a href="livro_new">
+    <button type="submit" class="btn btn-primary">
+        Cadastrar
+    </button>
+</a>
+
+{% endblock content %}
